@@ -1,18 +1,24 @@
-# 🛺 Rikshaw Rush — Karachi
+# 🛺 Auto-Rickshaw-Racing - Endless Runner Game
 
-A 3D endless runner in the browser. You drive a decorated Karachi auto-rickshaw through **Burns Road, Sea View, Kemari Harbour, Shahrah-e-Faisal and Mazar-e-Quaid**. Dodge traffic, cows and baraats, jump speed breakers and open manholes, carry passengers, race Chotu Ustad, and collect K-A-R-A-C-H-I.
+A 3D endless runner in the browser. You drive a decorated Raipur auto-rickshaw through ****. Dodge traffic, cows and baraats, jump speed breakers and open manholes, carry passengers, race Chotu Ustad, and collect .
 
-**Made in Pakistan 🇵🇰 — Developer: [Muhammad Talha Khan](https://muhammadtalhakhan2003.github.io/PortFolio_Talha/)**
+**Made in India — Developer: [MuKund Kumar](https://github.com/shivam-jha-89)**
+ 
+ # 👨‍💻 Developer
 
+Designed & Developed by Mukund Kumar
+Location: Road No. 17, Raipur, Chhattisgarh, India 🇮🇳
+Made with ❤️ in India | 2026
 ---
+Git clone - https://github.com/shivam-jha-89/Auto-Rickshaw-Racing
+Live -  https://auto-rickshaw-racing.vercel.app/
 
 ## Run it
 
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # production build in dist/
-npm run preview    # serve the build locally
+
 ```
 
 Requires Node 20+.
@@ -66,10 +72,10 @@ Keep each model to roughly 5–20k triangles and use a few simple materials so t
 
 ## Features
 
-- **5 Karachi districts** with gates between them, plus a choice of start location.
+- **5 Raipur districts** with gates between them, plus a choice of start location.
 - **Day/night cycle**, rain, dust storms, lightning, bloom, animated sea water, clouds and a distant skyline.
 - **Realistic roads:** speed breakers, open manholes, broken patches, potholes, puddles, asphalt patches and cracks.
-- **Karachi life:** paan cabins and paan stains, wall posters and chalking, baraats, camels at Clifton, cranes and ships at Kemari.
+- **Raipur life:** paan cabins and paan stains, wall posters and chalking, baraats, camels at Clifton, cranes and ships at Kemari.
 - **Gameplay:** combos and fever mode, near misses, ramps and air tricks, nitro smashing, horn that clears the way, passenger missions, the rival racer Chotu Ustad, K-A-R-A-C-H-I letters, and power-ups (magnet, shield, 2x coins, nitro, Meetha Paan).
 - **Progression:** garage (upgrades, paint, horns, animated trails, boosts), daily Lucky Spin, daily challenges, achievements, top runs, and continue-for-coins.
 - **Audio:** a synthesised two-stroke engine with gears, rattle and backfire. Rikshaw Radio has Dhol FM, Qawwali Night and a Lo-fi station, or **your own songs** stored only in your browser.
