@@ -1,0 +1,10 @@
+node_modules
+dist
+*.local
+blender/_preview
+
+.vercel
+.env*
+promo/frames
+promo/*.mp4
+promo/_test

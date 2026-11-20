@@ -1,0 +1,10 @@
+{
+  "_help": "Built by blender/build_models.py. Delete a name from the list to fall back to the procedural model.",
+  "models": [
+    "rickshaw",
+    "truck",
+    "bus",
+    "cow",
+    "camel"
+  ]
+}

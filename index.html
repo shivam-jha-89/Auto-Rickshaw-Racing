@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b1024" />
+  <meta name="description" content="Rikshaw Rush — a 3D endless rickshaw runner through Karachi. Dodge traffic, carry passengers, smash through with nitro." />
+  <title>Rikshaw Rush</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>
+    // Catch the install prompt as early as possible (it can fire before the game boots) + register the service worker.
+    window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.__installPrompt = e; window.dispatchEvent(new Event('install-available')); });
+    if ('serviceWorker' in navigator) window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
+  </script>
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div id="speedlines"></div>
+  <div id="fever"></div>
+  <div id="vignette"></div>
+  <div id="flash"></div>
+
+  <!-- ===== HUD ===== -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hud-left">
+        <div class="pill score">
+          <div class="score-row"><small>SCORE</small><i id="hud-mult" class="mult hidden">x1</i></div>
+          <b id="hud-score">0</b>
+          <span class="dist"><span class="dist-ic">📍</span><b id="hud-dist">0</b> m</span>
+        </div>
+      </div>
+      <div class="hud-mid">
+        <div id="hud-letters"></div>
+        <div id="hud-race" class="hidden"><span>🛺 Chotu Ustad</span><b id="hud-race-gap">0m</b><i><em id="hud-race-bar"></em></i></div>
+        <div id="hud-mission" class="hidden">
+          <span id="hud-mission-text"></span><b id="hud-mission-time"></b>
+          <i><em id="hud-mission-bar"></em></i>
+        </div>
+      </div>
+      <div class="hud-right">
+        <div class="pill coins"><span class="coin-dot">Rs</span><b id="hud-coins">0</b></div>
+        <div id="hud-lives" class="pill lives"></div>
+        <button id="btn-pause" class="icon-btn" aria-label="Pause">❚❚</button>
+      </div>
+    </div>
+    <div class="hud-bottom">
+      <div id="hud-powers"></div>
+      <div class="nitro-wrap">
+        <div class="nitro-label">NITRO <small>Shift / N</small></div>
+        <div class="nitro-bar"><i id="hud-nitro"></i><span class="tick"></span></div>
+      </div>
+      <div class="pill speed"><b id="hud-speed">0</b><small>km/h</small></div>
+    </div>
+    <div id="hud-boosts" class="hidden"></div>
+    <button id="hud-radio" class="radio-chip"><span id="radio-now">📻 Dhol FM 102</span><small>R — next</small></button>
+    <div id="touch-pad" class="hidden">
+      <button id="btn-horn" class="round">📯</button>
+      <button id="btn-nitro" class="round nitro">⚡</button>
+    </div>
+  </div>
+
+  <div id="popups"></div>
+  <div id="toast"></div>
+  <div id="bubble"><span id="bubble-text"></span></div>
+  <div id="district">
+    <small id="district-tag"></small>
+    <b id="district-name"></b>
+    <span id="district-urdu" lang="ur" dir="rtl"></span>
+    <em id="district-bonus"></em>
+  </div>
+
+  <!-- ===== Screens ===== -->
+  <section id="screen-loading" class="screen">
+    <div class="loader"><div class="spinner"></div><p>Rikshaw start ho raha hai…</p></div>
+  </section>
+
+  <div id="userbar" class="hidden">
+    <span id="user-hello"></span>
+    <button class="chip" id="btn-login">🔑 Login</button>
+    <button class="chip gold" id="btn-signup">✨ Sign up</button>
+    <button class="chip hidden" id="btn-profile">👤 Profile</button>
+    <button class="chip hidden" id="btn-logout">Logout</button>
+  </div>
+
+  <section id="screen-menu" class="screen hidden left">
+    <div class="panel glow-border menu-panel">
+      <h1><span>Rikshaw</span><span>Rush</span></h1>
+      <p class="urdu-title" lang="ur" dir="rtl">رکشہ رش · کراچی</p>
+      <p class="tagline" id="menu-tip"></p>
+      <button class="btn big shimmer" data-act="play">▶ Chalo bawa!</button>
+      <div class="start-pick">
+        <button class="arrow" id="start-prev" aria-label="Previous location">◀</button>
+        <div><small>START LOCATION</small><b id="start-name">Burns Road</b></div>
+        <button class="arrow" id="start-next" aria-label="Next location">▶</button>
+      </div>
+      <div class="tiles">
+        <button class="tile" data-act="garage"><span>🛠️</span>Garage</button>
+        <button class="tile" data-act="challenges"><span>🏆</span>Challenges<i id="badge-ch" class="badge hidden">!</i></button>
+        <button class="tile" data-act="spin"><span>🎡</span>Lucky Spin<i id="badge-spin" class="badge hidden">1</i></button>
+        <button class="tile" data-act="radio"><span>📻</span>Radio</button>
+        <button class="tile" data-act="settings"><span>⚙️</span>Settings</button>
+        <button class="tile" data-act="howto"><span>❔</span>How to</button>
+      </div>
+      <div id="install-card" class="install-card hidden">
+        <div class="install-ic">📲</div>
+        <div class="install-txt"><b>Install Rikshaw Rush</b><small id="install-sub">Home screen ya desktop pe — offline bhi chalta hai, bilkul free.</small></div>
+        <button class="btn sm" id="btn-install">Install</button>
+      </div>
+      <div class="stats">
+        <div>Best <b id="menu-high">0</b></div>
+        <div>Wallet <b><span class="coin-dot sm">Rs</span> <span id="menu-coins">0</span></b></div>
+        <button class="link-btn" data-act="about"><i>i</i>About</button>
+      </div>
+    </div>
+  </section>
+
+  <footer id="credits-bar">
+    <span>Made in Pakistan <svg class="flag" viewBox="0 0 30 20" aria-label="Pakistan"><rect width="30" height="20" fill="#01411c"/><rect width="7.5" height="20" fill="#fff"/><circle cx="19" cy="10" r="5.2" fill="#fff"/><circle cx="20.4" cy="8.9" r="4.4" fill="#01411c"/><polygon points="22.6,6.2 23.1,7.6 24.6,7.6 23.4,8.5 23.9,9.9 22.6,9.0 21.4,9.9 21.9,8.5 20.6,7.6 22.1,7.6" fill="#fff"/></svg></span>
+    <span>Developer: <a href="https://muhammadtalhakhan2003.github.io/PortFolio_Talha/" target="_blank" rel="noopener">Muhammad Talha Khan ↗</a></span>
+    <em>Is game ko banate waqt koi rikshaw waala zakhmi nahi hua — sirf developer ki neend shaheed hui. 😴☕</em>
+  </footer>
+
+  <section id="screen-garage" class="screen hidden right">
+    <div class="panel wide">
+      <h2>Garage</h2>
+      <div class="wallet"><span class="coin-dot">Rs</span><b id="garage-coins">0</b></div>
+      <div class="tabs">
+        <button class="tab active" data-tab="upgrades">Upgrades</button>
+        <button class="tab" data-tab="paint">Paint</button>
+        <button class="tab" data-tab="horn">Horn</button>
+        <button class="tab" data-tab="trail">Trails</button>
+        <button class="tab" data-tab="boosts">Boosts</button>
+      </div>
+      <div id="garage-list" class="list"></div>
+      <button class="btn" data-act="back">Done</button>
+    </div>
+  </section>
+
+  <section id="screen-challenges" class="screen hidden">
+    <div class="panel wide">
+      <h2>Challenges</h2>
+      <div class="label">Aaj ke challenges <small id="ch-reset"></small></div>
+      <div id="daily-list" class="list"></div>
+      <div class="label">Achievements</div>
+      <div id="ach-list" class="ach-grid"></div>
+      <div class="label">Top runs</div>
+      <ol id="leaderboard" class="board"></ol>
+      <button class="btn" data-act="back">Back</button>
+    </div>
+  </section>
+
+  <section id="screen-spin" class="screen hidden">
+    <div class="panel wide glow-border">
+      <h2>Lucky Spin 🎡</h2>
+      <p class="tagline" id="spin-note">Roz ek spin free — kismat aazma bawa!</p>
+      <div class="wheel-wrap">
+        <div class="wheel-pin">▼</div>
+        <div id="wheel"></div>
+      </div>
+      <div id="spin-result" class="spin-result"></div>
+      <button class="btn big shimmer" id="btn-spin">Spin karo!</button>
+      <button class="btn" data-act="back">Back</button>
+    </div>
+  </section>
+
+  <section id="screen-radio" class="screen hidden">
+    <div class="panel wide glow-border">
+      <h2>Rikshaw Radio 📻</h2>
+      <div id="station-list" class="list"></div>
+      <div class="label">Meri Playlist <small>— apne gaane add karo (sirf aap ke browser mein save hote hain)</small></div>
+      <div id="song-list" class="list"></div>
+      <label class="btn file-btn">➕ Gaane add karo<input id="song-input" type="file" accept="audio/*" multiple hidden /></label>
+      <button class="btn" data-act="back">Done</button>
+    </div>
+  </section>
+
+  <section id="screen-about" class="screen hidden">
+    <div class="panel wide glow-border about">
+      <h2>About Rikshaw Rush</h2>
+      <p>A 3D endless runner through Karachi — Burns Road, Sea View, Kemari Harbour, Shahrah-e-Faisal and Mazar-e-Quaid — built entirely in the browser.</p>
+      <div class="label">Engineering highlights</div>
+      <ul class="tech">
+        <li><b>Zero asset files.</b> Every model, texture and sound is generated in code at startup: geometry is baked per material into 2–4 draw calls per object, textures are painted on &lt;canvas&gt;, and all audio is synthesised with the Web Audio API.</li>
+        <li><b>Curved-world shader.</b> A vertex-shader bend makes the straight track drop over the horizon and sway, while gameplay stays in straight space.</li>
+        <li><b>Fair procedural spawner.</b> Traffic speed is a fraction of the player's, so every obstacle has a fixed arrival distance — the generator can guarantee an open lane and that vehicles never clip through each other.</li>
+        <li><b>Dynamic world.</b> Day/night cycle, rain and dust storms, lightning, bloom post-processing, animated water, drifting clouds and a distant skyline.</li>
+        <li><b>Systems.</b> Combos and fever mode, AI rival racer, passenger missions, power-ups, daily challenges, achievements, garage economy, lucky spin, radio with your own playlist (IndexedDB).</li>
+        <li><b>Platform.</b> Clerk sign-in with cloud save, installable PWA with offline play, responsive on phone, tablet and desktop, touch + keyboard controls, optional Blender .glb model overrides.</li>
+      </ul>
+      <div class="label">Stack</div>
+      <div class="chips"><span>Three.js</span><span>WebGL</span><span>GLSL</span><span>Web Audio</span><span>Vite</span><span>Clerk</span><span>IndexedDB</span><span>PWA</span><span>Vanilla JS</span></div>
+      <div class="credits big">
+        <span>Made in Pakistan <svg class="flag" viewBox="0 0 30 20" aria-label="Pakistan"><rect width="30" height="20" fill="#01411c"/><rect width="7.5" height="20" fill="#fff"/><circle cx="19" cy="10" r="5.2" fill="#fff"/><circle cx="20.4" cy="8.9" r="4.4" fill="#01411c"/><polygon points="22.6,6.2 23.1,7.6 24.6,7.6 23.4,8.5 23.9,9.9 22.6,9.0 21.4,9.9 21.9,8.5 20.6,7.6 22.1,7.6" fill="#fff"/></svg></span>
+        <span>Developer: <a href="https://muhammadtalhakhan2003.github.io/PortFolio_Talha/" target="_blank" rel="noopener">Muhammad Talha Khan ↗</a></span>
+        <em>Is game ko banate waqt koi rikshaw waala zakhmi nahi hua — sirf developer ki neend shaheed hui. 😴☕</em>
+      </div>
+      <button class="btn" data-act="back">Back</button>
+    </div>
+  </section>
+
+  <section id="screen-settings" class="screen hidden">
+    <div class="panel wide">
+      <h2>Settings</h2>
+      <label class="setting">Volume <input id="set-volume" type="range" min="0" max="1" step="0.05" /></label>
+      <label class="setting">Music <input id="set-music" type="checkbox" /></label>
+      <label class="setting">Camera shake <input id="set-shake" type="checkbox" /></label>
+      <label class="setting">Graphics
+        <select id="set-quality"><option value="auto">Auto</option><option value="high">High (bloom)</option><option value="low">Low (fast)</option></select>
+      </label>
+      <div class="setting" id="account-row">Account <span id="account-state">Guest</span></div>
+      <button class="btn danger" id="btn-reset">Reset progress</button>
+      <button class="btn" data-act="back">Done</button>
+    </div>
+  </section>
+
+  <section id="screen-howto" class="screen hidden">
+    <div class="panel wide">
+      <h2>How to Play</h2>
+      <ul class="howto">
+        <li><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd> / swipe — lane badlo</li>
+        <li><kbd>↑</kbd> <kbd>W</kbd> <kbd>Space</kbd> / swipe up — jump (potholes &amp; barriers)</li>
+        <li>In the air press jump again — <b>360° trick</b> (+score, +nitro)</li>
+        <li><kbd>↓</kbd> <kbd>S</kbd> / swipe down — brake, or slam down in the air</li>
+        <li><kbd>Shift</kbd> <kbd>N</kbd> / double-tap / ⚡ — <b>Nitro</b>: smash through everything</li>
+        <li><kbd>H</kbd> / tap — horn: the car ahead moves aside (trucks &amp; cows don't care!)</li>
+        <li>Near misses &amp; tricks build a <b>combo multiplier</b> up to x6</li>
+        <li>Hail-waving <b>sawari</b>: drive in the edge lane next to them, then reach the drop-off before time runs out</li>
+        <li>Wooden ramps launch you over traffic. Puddles slow you down.</li>
+        <li>Power-ups: 🧲 Magnet · 🛡 Shield · 2x Coins · ⚡ Nitro canister</li>
+        <li>🔤 <b>K-A-R-A-C-H-I</b> letters jama karo — roz ka jackpot Rs 2500!</li>
+        <li>🛺 <b>Chotu Ustad</b> race lagaye to use overtake karo</li>
+        <li>🔥 x6 combo pe <b>FEVER</b>: double score + double coins</li>
+        <li><kbd>B</kbd> Headstart · <kbd>V</kbd> Shield Start (run ke pehle 7 second)</li>
+        <li><kbd>R</kbd> radio station badlo · <kbd>P</kbd>/<kbd>Esc</kbd> pause · <kbd>M</kbd> mute</li>
+      </ul>
+      <button class="btn" data-act="back">Samajh gaya!</button>
+    </div>
+  </section>
+
+  <section id="screen-pause" class="screen hidden">
+    <div class="panel">
+      <h2>Paused</h2>
+      <p class="tagline">Chai break! ☕</p>
+      <button class="btn big" data-act="resume">▶ Resume</button>
+      <button class="btn" data-act="settings">⚙ Settings</button>
+      <button class="btn" data-act="quit">Main Menu</button>
+    </div>
+  </section>
+
+  <section id="screen-gameover" class="screen hidden">
+    <div class="panel wide">
+      <h2>Rikshaw Band! 🛺💥</h2>
+      <p class="tagline" id="go-line"></p>
+      <div class="final"><small>FINAL SCORE</small><b id="go-score">0</b><em id="go-new" class="hidden">🎉 New high score!</em></div>
+      <div class="stats grid">
+        <div>Distance <b id="go-distance">0 m</b></div>
+        <div>Coins earned <b id="go-coins">0</b></div>
+        <div>Passengers <b id="go-fares">0</b></div>
+        <div>Near misses <b id="go-near">0</b></div>
+        <div>Tricks <b id="go-tricks">0</b></div>
+        <div>Smashed <b id="go-smash">0</b></div>
+        <div>Races won <b id="go-rivals">0</b></div>
+        <div>Letters <b id="go-letters">0</b></div>
+        <div>Max speed <b id="go-speed">0</b></div>
+      </div>
+      <div id="go-unlocks"></div>
+      <button class="btn big gold hidden" id="btn-revive">❤ Continue — <span id="revive-cost">500</span> Rs</button>
+      <div class="row">
+        <button class="btn big" data-act="play">↻ Phir se!</button>
+        <button class="btn big share" data-act="share">📤 Share</button>
+      </div>
+      <div class="row">
+        <button class="btn" data-act="garage">🛠 Garage</button>
+        <button class="btn" data-act="menu">Main Menu</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="confetti"></div>
+  <pre id="debug" class="hidden"></pre>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
