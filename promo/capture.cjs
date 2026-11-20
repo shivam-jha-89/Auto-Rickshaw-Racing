@@ -96,7 +96,7 @@ const SAVE = JSON.stringify({
       <div class="card" id="pc-end"><div><h1 style="font-size:110px">PLAY FREE <span>→</span></h1>
         <div class="url">rikshaw-rush.vercel.app</div>
         <div class="chips"><i>Three.js</i><i>GLSL</i><i>Web Audio</i><i>Blender</i><i>Clerk</i><i>PWA</i></div>
-        <div class="by">Made in Pakistan 🇵🇰 · Muhammad Talha Khan</div></div></div>`;
+        <div class="by">Made in India · Mukund Kumar</div></div></div>`;
     document.body.appendChild(d);
     document.getElementById('credits-bar')?.remove();
     window.__promo = {
