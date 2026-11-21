@@ -104,7 +104,7 @@ export const ui = {
   // ---------- K A R A C H I letters ----------
   letters(got, flash = false) {
     const el = $('hud-letters');
-    el.innerHTML = 'KARACHI'.split('').map((c, i) => `<span class="${i < got ? 'on' : ''} ${flash && i === got - 1 ? 'new' : ''}">${c}</span>`).join('');
+    el.innerHTML = 'Raipur'.split('').map((c, i) => `<span class="${i < got ? 'on' : ''} ${flash && i === got - 1 ? 'new' : ''}">${c}</span>`).join('');
   },
 
   // ---------- boosts offered at run start ----------

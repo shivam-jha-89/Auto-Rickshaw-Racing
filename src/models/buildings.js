@@ -39,7 +39,7 @@ function oldCity(district) {
   b.box(d, floors * fh, w, wall, -d / 2, 3.8 + (floors * fh) / 2, 0, { kind: 'facade' });
   shopFront(b, w, d, district);
   if (Math.random() < 0.7) posters(b, w, 4.6);
-  // paan ki peek in the corners — every Karachi wall has it
+  // paan ki peek in the corners — every Raipur wall has it
   for (let i = 0, n = randi(1, 3); i < n; i++) { const z = Math.random() < 0.5 ? -w / 2 + 0.4 : w / 2 - 0.4; b.plane(rand(0.6, 1.1), rand(0.6, 1.1), 'stain', 0xffffff, [0.09 + i * 0.002, rand(0.3, 0.9), z + rand(-0.2, 0.2)], [0, FACE, rand(0, 6)]); }
   b.box(0.3, 0.2, w + 0.1, 0xf5f0e6, 0.1, 3.8, 0);
   // jharokas (wooden balconies)

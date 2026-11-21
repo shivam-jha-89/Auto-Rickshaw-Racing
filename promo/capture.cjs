@@ -91,7 +91,7 @@ const SAVE = JSON.stringify({
     document.head.appendChild(st);
     const d = document.createElement('div'); d.id = 'promo';
     d.innerHTML = `<div class="flash"></div>
-      <div class="card" id="pc-title"><div><h1>RIKSHAW <span>RUSH</span></h1><div class="ur">رکشہ رش · کراچی</div><p>A 3D Karachi street racer that runs right in your browser</p></div></div>
+      <div class="card" id="pc-title"><div><h1>RIKSHAW <span>RUSH</span></h1><div class="ur">رکشہ رش · رائپور</div><p>A 3D Raipur street racer that runs right in your browser</p></div></div>
       <div class="cap" id="pc-cap"><b></b><small></small></div>
       <div class="card" id="pc-end"><div><h1 style="font-size:110px">PLAY FREE <span>→</span></h1>
         <div class="url">rikshaw-rush.vercel.app</div>
@@ -153,10 +153,10 @@ const SAVE = JSON.stringify({
   await js(() => window.__promo.card('pc-title', false));
   await hold(0.9);
 
-  // ---- 1: Burns Road, daytime ----
+  // ---- 1: Raipur, Ring Road, daytime ----
   await startIn('old', 0.45);
   await hold(0.6);
-  await js(() => window.__promo.cap('Burns Road, Karachi', 'Procedural streets · zero asset files · built in code'));
+  await js(() => window.__promo.cap('Raipur, Ring Road', 'Procedural streets · zero asset files · built in code'));
   for (let i = 0; i < 6; i++) { await keepTod(0.45); await hold(0.5); if (i === 2) await press('jump'); if (i === 3) await press('jump'); }
   await press('nitro'); await js(() => { window.__rr.run.nitro = 1; window.__rr.run.input('nitro'); });
   await hold(2.2);

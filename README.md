@@ -79,7 +79,7 @@ Keep each model to roughly 5–20k triangles and use a few simple materials so t
 - **Gameplay:** combos and fever mode, near misses, ramps and air tricks, nitro smashing, horn that clears the way, passenger missions, the rival racer Chotu Ustad, K-A-R-A-C-H-I letters, and power-ups (magnet, shield, 2x coins, nitro, Meetha Paan).
 - **Progression:** garage (upgrades, paint, horns, animated trails, boosts), daily Lucky Spin, daily challenges, achievements, top runs, and continue-for-coins.
 - **Audio:** a synthesised two-stroke engine with gears, rattle and backfire. Rikshaw Radio has Dhol FM, Qawwali Night and a Lo-fi station, or **your own songs** stored only in your browser.
-- **Dialogue** is all in Karachi's own zubaan.
+- **Dialogue** is all in Raipur's own zubaan.
 - **Platform:** Clerk login with cloud save, installable PWA with offline play, and layouts for phone, tablet and desktop.
 
 ## Tech

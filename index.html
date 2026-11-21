@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#1b1024" />
-  <meta name="description" content="Rikshaw Rush — a 3D endless rickshaw runner through Karachi. Dodge traffic, carry passengers, smash through with nitro." />
+  <meta name="description" content="Rikshaw Rush — a 3D endless rickshaw runner through Raipur. Dodge traffic, carry passengers, smash through with nitro." />
   <title>Rikshaw Rush</title>
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -94,12 +94,12 @@
   <section id="screen-menu" class="screen hidden left">
     <div class="panel glow-border menu-panel">
       <h1><span>Rikshaw</span><span>Rush</span></h1>
-      <p class="urdu-title" lang="ur" dir="rtl">رکشہ رش · کراچی</p>
+      <p class="urdu-title" lang="ur" dir="rtl">रिक्शा की भीड़ · रायपुर</p>
       <p class="tagline" id="menu-tip"></p>
       <button class="btn big shimmer" data-act="play">▶ Chalo bawa!</button>
       <div class="start-pick">
         <button class="arrow" id="start-prev" aria-label="Previous location">◀</button>
-        <div><small>START LOCATION</small><b id="start-name">Burns Road</b></div>
+        <div><small>START LOCATION</small><b id="start-name"></b></div>
         <button class="arrow" id="start-next" aria-label="Next location">▶</button>
       </div>
       <div class="tiles">
@@ -124,10 +124,37 @@
   </section>
 
   <footer id="credits-bar">
-    <span>Made in India <svg class="flag" viewBox="0 0 30 20" aria-label="India"><rect width="30" height="20" fill="#01411c"/><rect width="7.5" height="20" fill="#fff"/><circle cx="19" cy="10" r="5.2" fill="#fff"/><circle cx="20.4" cy="8.9" r="4.4" fill="#01411c"/><polygon points="22.6,6.2 23.1,7.6 24.6,7.6 23.4,8.5 23.9,9.9 22.6,9.0 21.4,9.9 21.9,8.5 20.6,7.6 22.1,7.6" fill="#fff"/></svg></span>
-    <span>Developer: <a href="https://github.com/shivam-jha-89" target="_blank" rel="noopener">Mukund Kumar ↗</a></span>
-    <em>Is game ko banate waqt koi rikshaw waala zakhmi nahi hua — sirf developer ki neend shaheed hui. 😴☕</em>
-  </footer>
+  <span>
+    Made in India
+    <svg class="flag" viewBox="0 0 30 20" aria-label="India" role="img">
+      <!-- Saffron -->
+      <rect width="30" height="6.67" y="0" fill="#FF9933" />
+      <!-- White -->
+      <rect width="30" height="6.67" y="6.67" fill="#FFFFFF" />
+      <!-- Green -->
+      <rect width="30" height="6.66" y="13.33" fill="#138808" />
+      <!-- Ashoka Chakra -->
+      <circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width="0.45" />
+      <circle cx="15" cy="10" r="0.45" fill="#000080" />
+      <g stroke="#000080" stroke-width="0.22">
+        <line x1="15" y1="7.4" x2="15" y2="12.6" />
+        <line x1="12.4" y1="10" x2="17.6" y2="10" />
+        <line x1="13.16" y1="8.16" x2="16.84" y2="11.84" />
+        <line x1="16.84" y1="8.16" x2="13.16" y2="11.84" />
+        <line x1="13.9" y1="7.62" x2="16.1" y2="12.38" />
+        <line x1="16.1" y1="7.62" x2="13.9" y2="12.38" />
+        <line x1="12.62" y1="8.9" x2="17.38" y2="11.1" />
+        <line x1="17.38" y1="8.9" x2="12.62" y2="11.1" />
+        <line x1="12.62" y1="11.1" x2="17.38" y2="8.9" />
+        <line x1="17.38" y1="11.1" x2="12.62" y2="8.9" />
+        <line x1="13.9" y1="12.38" x2="16.1" y2="7.62" />
+        <line x1="16.1" y1="12.38" x2="13.9" y2="7.62" />
+      </g>
+    </svg>
+  </span>
+  <span>Developer: <a href="https://github.com/shivam-jha-89" target="_blank" rel="noopener">Shivam Kumar ↗</a></span>
+  <em>Is game ko banate waqt koi rikshaw waala zakhmi nahi hua — sirf developer ki neend shaheed hui. 😴☕</em>
+</footer>
 
   <section id="screen-garage" class="screen hidden right">
     <div class="panel wide">
@@ -161,7 +188,7 @@
   <section id="screen-spin" class="screen hidden">
     <div class="panel wide glow-border">
       <h2>Lucky Spin 🎡</h2>
-      <p class="tagline" id="spin-note">Roz ek spin free — kismat aazma bawa!</p>
+      <p class="tagline" id="spin-note">Roz ek spin free — kismat aazma baba!</p>
       <div class="wheel-wrap">
         <div class="wheel-pin">▼</div>
         <div id="wheel"></div>
@@ -185,8 +212,8 @@
 
   <section id="screen-about" class="screen hidden">
     <div class="panel wide glow-border about">
-      <h2>About Rikshaw Rush</h2>
-      <p>A 3D endless runner through Raipur — Burns Road, Sea View, Kemari Harbour, Shahrah-e-Faisal and Mazar-e-Quaid — built entirely in the browser.</p>
+      <h2>About Rikshaw Rush</h2>Raipur
+      <p>A 3D endless runner through Raipur — Raipur, Sea View, Kemari Harbour,  shivam — built entirely in the browser.</p>
       <div class="label">Engineering highlights</div>
       <ul class="tech">
         <li><b>Zero asset files.</b> Every model, texture and sound is generated in code at startup: geometry is baked per material into 2–4 draw calls per object, textures are painted on &lt;canvas&gt;, and all audio is synthesised with the Web Audio API.</li>

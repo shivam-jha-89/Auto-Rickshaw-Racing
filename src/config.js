@@ -10,7 +10,7 @@ export const SPEED = { start: 18, max: 46, accel: 0.2 };
 
 export const DISTRICTS = [
   {
-    id: 'old', name: 'Burns Road', urdu: 'برنس روڈ', tag: 'Saddar Food Street',
+    id: 'old', name: 'Raipur', urdu: ' raipur', tag: 'Saddar Food Street',
     ground: 0x9a7b55, walk: 0xc9b08a,
     walls: [0xd8b48a, 0xc98f5a, 0xe3cfa8, 0xa8653f, 0xe8d6b5, 0xb7845c, 0xcf7f4f],
     wood: [0x2e6b8a, 0x3b7d3a, 0x8a2f2f, 0x6b4a2b, 0x2f4f8f],
@@ -24,14 +24,14 @@ export const DISTRICTS = [
     fog: 0.0,
   },
   {
-    id: 'port', name: 'Kemari Harbour', urdu: 'کیماڑی', tag: 'Karachi Port',
+    id: 'port', name: 'Kemari Harbour', urdu: 'کیماڑی', tag: 'Raipur Port',
     ground: 0x8c8f93, walk: 0xa9a59c,
     walls: [0x9aa5ad, 0xb8b0a0, 0x7f8a8f, 0xc9c3b5, 0x6f7f74],
     wood: [0xd62828, 0x1565c0, 0x0b8f3a, 0xff8f00, 0x00838f, 0x6a1b9a],
     fog: 0.0,
   },
   {
-    id: 'neon', name: 'Shahrah-e-Faisal', urdu: 'شاہراہِ فیصل', tag: 'Karachi by Night',
+    id: 'neon', name: 'Shahrah-e-Faisal', urdu: 'شاہراہِ فیصل', tag: 'Raipur by Night',
     ground: 0x4a4e56, walk: 0x9a9ca4,
     walls: [0x5b6a7d, 0x37465a, 0x7b8796, 0x2c3440, 0x8fa3b8, 0x48506a],
     wood: [0x222831],
@@ -95,7 +95,7 @@ export const POWERUPS = {
   paan: { label: 'Meetha Paan', color: 0x2f9e44, icon: 4 },
 };
 
-// All dialogue in Karachi ki zubaan (Roman Urdu). Original lines.
+// All dialogue in Raipur ki zubaan (Roman). Original lines.
 export const LINES = {
   request: [
     'Abey bhai, {d}m aage chhorna hai — {t} second mein, scene on hai!',
@@ -109,8 +109,8 @@ export const LINES = {
     'Abey yaar, teri gaari to jahaz hai jahaz!',
     'Kya scene hai bawa, gaana-shaana laga na!',
     'Tension nai lene ka, apun ko jaldi nai hai... jhoot bola, hai!',
-    'Burns Road ki nihari — bas naam hi kaafi hai, bawa.',
-    'Sea View pe bhutta aur chuski — Karachi ka asal maza!',
+    'Raipur ki nihari — bas naam hi kaafi hai, bawa.',
+    'Sea View pe bhutta aur chuski — Raipur ka asal maza!',
     'Abey dekh ke! Woh bus waala to pagal hai!',
     'Garmi itni hai ke bheja fry ho gaya, AC nai hai isme?',
     'Patli gali se nikal le jani, shortcut hai!',
@@ -119,10 +119,10 @@ export const LINES = {
     'Yahan ka traffic dekh ke to tension ho jaati hai, bawa.',
     'Apun ka cousin bhi rikshaw chalata hai, par tu to pilot nikla!',
     'Chill maar, chill maar... par jaldi bhi kar!',
-    'Karachi wale kabhi late nai hote — bas traffic late karta hai!',
+    'Raipur wale kabhi late nai hote — bas traffic late karta hai!',
     'Bawa ek meetha paan rok ke le lein? Chaar second lagenge!',
     'Abey khidki se peek mat maarna, pichli dafa mera kurta laal ho gaya tha!',
-    'Paan khaye bina Karachi ka safar adhoora hai jani.',
+    'Paan khaye bina Raipur ka safar adhoora hai jani.',
     'Woh dekho, paan waala chacha — wahan ka gulkand faadu hai!',
   ],
   success: [
@@ -149,11 +149,11 @@ export const LINES = {
     'Tension nai lene ka bawa, agli dafa pakka!',
     'Bheja fry ho gaya? Ek chai pee aur wapas aa!',
     'Rikshaw ka scene off ho gaya... mechanic bula!',
-    'Koi baat nai jani, Karachi wale haar nai maante!',
+    'Koi baat nai jani, Raipur wale haar nai maante!',
   ],
 };
 
-// Short shouty HUD popups in Karachi style
+// Short shouty HUD popups in Raipur style
 export const SHOUTS = {
   near: ['BAAL BAAL BACHA!', 'FAADU!', 'EKDUM SCENE!', 'ABEY WAH!', 'JANI KYA BAAT!'],
   horn: ['ABEY HAT NA! ✋', 'SIDE DE BAWA!', 'RASTA DE JANI!'],
@@ -168,24 +168,24 @@ export const TIPS = [
   'Near-miss se combo barhta hai — x6 pe FEVER on ho jaata hai!',
   'Nitro full ho to Shift / N daba — sab kuch tod de!',
   'Kinare waali lane mein sawari utha, time pe pohncha — tip pakki!',
-  'K-A-R-A-C-H-I ke letters jama kar, jackpot tera!',
+  'R-A-I-P-U-R ke letters jama kar, jackpot tera!',
   'Chotu Ustad race lagaye to nitro bacha ke rakh!',
-  'Burns Road, Sea View, Kemari, Shahrah-e-Faisal, Mazar — poora Karachi ghoom!',
+  'Ring Road, Sea View, Kemari, Shahrah-e-Faisal, Mazar — poora Raipur ghoom!',
   'Tension nai lene ka — roz ka Lucky Spin free hai!',
   'Meetha Paan khao — coins khud kheench ke aate hain, aur thodi si hifazat bhi!',
 ];
 
 // Wall posters & chalking (original designs): [headline, sub, bg, fg]
 export const POSTERS = [
-  ['TENSION NAI LENE KA', 'Karachi ka formula', '#ffd60a', '#1b1024'],
+  ['TENSION NAI LENE KA', 'Raipur ka formula', '#ffd60a', '#1b1024'],
   ['CHAI PEE LE BAWA', 'Doodh patti • 24 ghante', '#d62828', '#fff6dc'],
   ['BUN KABAB', 'Ekdum garam • sirf 80 Rs', '#ff7a1a', '#1b1024'],
-  ['DIL SE KARACHIITE', 'Shehr-e-Quaid', '#0b6e3a', '#ffffff'],
+  ['DIL SE RAIPIRITE', 'Shehr-e-Quaid', '#0b6e3a', '#ffffff'],
   ['CHILL MAAR!', 'Sea View pe milte hain', '#00acc1', '#ffffff'],
   ['SCENE ON HAI', 'Raat ki biryani party', '#6a1b9a', '#ffd60a'],
   ['LAFDA MAT KAR', 'Line mein chal bawa', '#1565c0', '#ffffff'],
   ['RIKSHAW KING', 'Mechanic: Chacha Bashir', '#e91e63', '#fff6dc'],
-  ['KARACHI KI JAAN', 'Roshniyon ka shehr', '#1b1024', '#ffd60a'],
+  ['R-A-I-P-U-R KI JAAN', 'Roshniyon ka shehr', '#1b1024', '#ffd60a'],
   ['FAADU PARATHA', 'Desi ghee wala', '#f2b705', '#7a1f1f'],
   ['TUITION CENTRE', 'Maths • Physics • Sir Kamran', '#ffffff', '#1565c0'],
   ['CRICKET MATCH', 'Sunday • Gali No. 7', '#2e7d32', '#ffffff'],

@@ -332,7 +332,7 @@ function revive() {
 }
 
 async function shareScore() {
-  const text = `🛺 Rikshaw Rush — Karachi! Mera score ${Math.floor(run.score).toLocaleString()} aur ${Math.floor(run.D).toLocaleString()} m. Tum beat kar sakte ho? 😎`;
+  const text = `🛺 Rikshaw Rush — Raipur! Mera score ${Math.floor(run.score).toLocaleString()} aur ${Math.floor(run.D).toLocaleString()} m. Tum beat kar sakte ho? 😎`;
   const url = location.origin;
   try {
     if (navigator.share) await navigator.share({ title: 'Rikshaw Rush', text, url });
