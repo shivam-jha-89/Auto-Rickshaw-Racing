@@ -412,7 +412,7 @@ function bindUI() {
   $('btn-login').addEventListener('click', () => auth.openSignIn());
   $('btn-signup').addEventListener('click', () => auth.openSignUp());
   $('btn-profile').addEventListener('click', () => auth.openProfile());
-  $('btn-logout').addEventListener('click', async () => { await auth.signOut(); ui.toast('Logout ho gaye — Allah hafiz!', 1400); });
+  $('btn-logout').addEventListener('click', async () => { await auth.signOut(); ui.toast('Logout ho gaye — Jay Shree Ram!', 1400); });
 
   document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));

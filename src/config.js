@@ -10,28 +10,28 @@ export const SPEED = { start: 18, max: 46, accel: 0.2 };
 
 export const DISTRICTS = [
   {
-    id: 'old', name: 'Raipur', urdu: ' raipur', tag: 'Saddar Food Street',
+    id: 'old', name: 'Raipur', Hindi: ' raipur', tag: 'Saddar Food Street',
     ground: 0x9a7b55, walk: 0xc9b08a,
     walls: [0xd8b48a, 0xc98f5a, 0xe3cfa8, 0xa8653f, 0xe8d6b5, 0xb7845c, 0xcf7f4f],
     wood: [0x2e6b8a, 0x3b7d3a, 0x8a2f2f, 0x6b4a2b, 0x2f4f8f],
     fog: 0.0,
   },
   {
-    id: 'sea', name: 'Sea View', urdu: 'سی ویو', tag: 'Clifton Beach',
+    id: 'sea', name: 'Sea View', Hindi: 'Sea View', tag: 'Clifton Beach',
     ground: 0xd9c08a, walk: 0xc9c2b4,
     walls: [0xf4f0e6, 0xbfe3e8, 0xf6d6c2, 0xd7ecd2, 0xfbe7a8, 0xe3d4f0],
     wood: [0x1fa2d6, 0xe84a8a, 0xf2b705],
     fog: 0.0,
   },
   {
-    id: 'port', name: 'Kemari Harbour', urdu: 'کیماڑی', tag: 'Raipur Port',
+    id: 'port', name: 'Kemari Harbour', Hindi: 'Kemari Harbour', tag: 'Raipur Port',
     ground: 0x8c8f93, walk: 0xa9a59c,
     walls: [0x9aa5ad, 0xb8b0a0, 0x7f8a8f, 0xc9c3b5, 0x6f7f74],
     wood: [0xd62828, 0x1565c0, 0x0b8f3a, 0xff8f00, 0x00838f, 0x6a1b9a],
     fog: 0.0,
   },
   {
-    id: 'neon', name: 'Shahrah-e-Faisal', urdu: 'شاہراہِ فیصل', tag: 'Raipur by Night',
+    id: 'neon', name: 'Raipur', Hindi: 'गोल बाज़ार', tag: 'Raipur by Night',
     ground: 0x4a4e56, walk: 0x9a9ca4,
     walls: [0x5b6a7d, 0x37465a, 0x7b8796, 0x2c3440, 0x8fa3b8, 0x48506a],
     wood: [0x222831],
@@ -39,7 +39,7 @@ export const DISTRICTS = [
     fog: 0.0,
   },
   {
-    id: 'mazar', name: 'Mazar-e-Quaid', urdu: 'مزارِ قائد', tag: 'Numaish Gardens',
+    id: 'mazar', name: 'Raipur', Hindi: ' गोल ', tag: 'Numaish Gardens',
     ground: 0x4f9a3c, walk: 0xd8d2c4,
     walls: [0xf5f5f0],
     wood: [0x0b6e3a, 0xffffff],

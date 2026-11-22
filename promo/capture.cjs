@@ -91,7 +91,7 @@ const SAVE = JSON.stringify({
     document.head.appendChild(st);
     const d = document.createElement('div'); d.id = 'promo';
     d.innerHTML = `<div class="flash"></div>
-      <div class="card" id="pc-title"><div><h1>RIKSHAW <span>RUSH</span></h1><div class="ur">رکشہ رش · رائپور</div><p>A 3D Raipur street racer that runs right in your browser</p></div></div>
+      <div class="card" id="pc-title"><div><h1>RIKSHAW <span>RUSH</span></h1><div class="ur"> Raipur</div><p>A 3D Raipur street racer that runs right in your browser</p></div></div>
       <div class="cap" id="pc-cap"><b></b><small></small></div>
       <div class="card" id="pc-end"><div><h1 style="font-size:110px">PLAY FREE <span>→</span></h1>
         <div class="url">rikshaw-rush.vercel.app</div>
